@@ -88,14 +88,14 @@ function App() {
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
                 {restroom.map((restroom) => (
-                    restroom.location?.lat && restroom.location?.lng && (
+                    restroom.lat && restroom.lon && (
                         <Marker
-                            key={restroom.id}
-                            position={[restroom.location.lat, restroom.location.lng]}
+                            key={restroom.id || restroom.name} // fallback key if no id
+                            position={[restroom.lat, restroom.lon]}
                         >
                             <Popup>
                                 <strong>{restroom.name}</strong><br />
-                                {restroom.location.address || 'No address'}
+                                {restroom.description || 'No description'}
                             </Popup>
                         </Marker>
                     )
