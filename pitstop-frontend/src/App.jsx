@@ -83,8 +83,8 @@ function App() {
         {/* Main Body: Map & Side Panel */}
         <div style={{flex: 1 }}>
             <MapContainer center={[37.7749, -122.4194]} zoom={13} style={{height: "100%", width: "100%" }}>
-                <TitleLayer
-                    attribution='&copy; OpenStreerMap contributors'
+                <TileLayer
+                    attribution='&copy; OpenStreetMap contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
                 {restroom.map((restroom) => (
