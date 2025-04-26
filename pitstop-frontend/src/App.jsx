@@ -8,6 +8,10 @@ import { Marker } from 'leaflet';
 function App() {
   const [restroom, setRestrooms] = useState([]);
   const [loading, setLoading] = useState(true);
+  // Later in production we would replace line 18 with something like this
+  // const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+  //axios.get(`${API_URL}/api/restrooms`);
+
 
   useEffect(() => {
     //Fetch restrooms from our backend API
