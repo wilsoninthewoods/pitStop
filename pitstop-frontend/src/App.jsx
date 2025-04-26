@@ -12,6 +12,7 @@ import './App.css';
 import axios from 'axios';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+import logo from './assets/pitStopLogo.png';
 
 
 /**
@@ -106,42 +107,35 @@ function App() {
         <div style={{width: "300px", padding: "1rem", display: "flex", flexDirection: "column", alignItems: "center", backgroundColor: "#f5f0e3" }}>
 
             {/* Logo */}
-            <img
-                src=""
-                alt="Logo"
-                style={{ marginBottom: "2rem"}}
+            <img 
+              src={logo}
+              alt="PitStop Logo" 
+              style={{ marginBottom: "2rem", maxWidth: "100%", height: "auto" }}
+            />
+
+            {/* Start Location Input */}
+            <input
+                type="text"
+                placeholder="Start Location"
+                style={{width: "100%", marginBottom: "1rem", padding: "0.5rem" }}
+            />
+
+            {/* End Location Input */}
+            <input
+                type="text"
+                placeholder="End Location"
+                style={{width: "100%", marginBottom: "1rem", padding: "0.5rem" }}
+            />
+
+            {/* Create Route Button */}
+            <button style={{ padding: "0.75rem 1rem", width: "100%"}}>
+                Create Route
+            </button>
+
         </div>
+
     </div>
   );
-
-  //return (
-  //    <div style={{ padding: "1rem" }}>
-  //      <h1>PitStop 🚻</h1>
-  //      {loading ? (
-  //          <p>Loading restrooms...</p>
-  //      ) : (
-  //          <MapContainer center={[43.615, -116.2023]} zoom={13} style={{ height: "80vh", width: "100%" }}>
-  //              <TileLayer
-  //                  attribution='&copy; OpenStreetMap contributors'
-  //                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-  //              />
-  //              {restroom.map((place) => (
-  //                  place.lat && place.lon && (
-  //                      <Marker
-  //                          key={place.id}
-  //                          position={[place.lat, place.lon]}
-  //                      >
-  //                          <Popup>
-  //                              <strong>{place.name}</strong><br />
-  //                              {place.description || 'No description available'}
-  //                          </Popup>
-  //                      </Marker>
-  //                  )
-  //              ))}
-  //          </MapContainer>
-  //      )}
-  //    </div>
-  //);
 }
 
 export default App;
