@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import axios from 'axios';
+import { Marker } from 'leaflet';
 
 function App() {
   const [restroom, setRestrooms] = useState([]);
@@ -27,16 +28,27 @@ function App() {
       {loading ? (
         <p>Loading restrooms...</p>
       ) : (
-        <ul>
+        <MapContainer center={[37.7749, -122.4194]} zoom={13} style={{ height: "80vh", width: "100%"}}>
+          <TitleLayer
+            attribution='&copy; OpenStreetMap contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
           {setRestrooms.map((restroom) => (
-            <li key={restroom.id}>
-              <strong>{restroom.name}</strong><br />
-              {restroom.location?.address || 'No address available'}
-            </li>
+            restroom.location?.lat && restroom.location?.lng && (
+              <Marker
+                key={restroom.id}
+                position={[restroom.location.lat, restroom.location.lng]}
+              >
+                <Popup>
+                  <strong>{restroom.name}</strong><br />
+                  {restroom.location.address || 'No address'}
+                </Popup>
+              </Marker>
+            )
           ))}
-        </ul>
+        </MapContainer>
       )}
-    </div>
+      </div>
   );
 }
   export default App;
